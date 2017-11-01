@@ -1,28 +1,40 @@
 /**
  * Created by wang.ding on 2017/8/18.
  */
-const path = require('path');
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/main.js',
+    devtool: 'eval-source-map',
+    entry: [
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',    // webpack 热更新
+        'react-hot-loader/patch',        // react 热更新
+        path.join(__dirname, 'src/main.js')
+    ],
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.join(__dirname, '/dist/'),
+        filename: '[name].js',
+        publicPath: '/'
     },
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist',
-        hot: true,
-        historyApiFallback: true,
-        https: true,
-        proxy: {
-            "/api": {
-                target: "http://10.1.15.16",
-                host: 'ops.dev.ucloudlink.com'
-            }
-        }
-    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './index.tpl.html',       // 根据魔板自动生成index.html
+            inject: 'body',
+            filename: './index.html'
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
+        })
+    ],
     module: {
+        resolve:{
+            extensions:['','.js','.json']
+        },
         loaders: [
             {
                 test: /\.js$/,
