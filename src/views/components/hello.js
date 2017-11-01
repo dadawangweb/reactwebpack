@@ -4,7 +4,22 @@
 import React from 'react'
 import '../assets/less/index.less'
 
-let Hello = React.createClass({
+// let Hello = React.createClass({
+//     render() {
+//         return (
+//             <div className="hello-component">
+//                 Hello,world ! React and Webpack
+//             </div>
+//         );
+//     }
+// });
+
+class Hello extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {date: new Date()};
+    }
+
     render() {
         return (
             <div className="hello-component">
@@ -12,6 +27,5 @@ let Hello = React.createClass({
             </div>
         );
     }
-});
-
+}
 export default Hello;

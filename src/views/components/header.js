@@ -2,15 +2,21 @@
  * Created by wang.ding on 2017/11/1.
  */
 import React from 'react'
+import Hello from './hello'
 
-let Header = React.createClass({
+class Header extends React.Component {
+    constructor (props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="hello-component">
-                header
+                header class
+                <Hello/>
             </div>
         );
     }
-});
+}
 
 export default Header;
