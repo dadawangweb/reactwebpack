@@ -20,7 +20,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.tpl.html',       // 根据魔板自动生成index.html
+            template: './index.html',       // 根据魔板自动生成index.html
             inject: 'body',
             filename: './index.html'
         }),
