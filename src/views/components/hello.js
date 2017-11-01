@@ -4,7 +4,7 @@
 import React from 'react'
 import '../assets/less/index.less'
 
-// let Hello = React.createClass({
+// let Hello = React.createClass({  //  二者等效
 //     render() {
 //         return (
 //             <div className="hello-component">

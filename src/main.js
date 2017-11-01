@@ -24,4 +24,4 @@ if (module.hot) {
             document.getElementById('root')
         );
     });
-}R
+}
