@@ -1,7 +1,8 @@
 /**
  * Created by dadawang on 2017/10/31.
  */
-var react = require('react');
+import React from 'react'
+import './views/assets/less/index.less'
 
-console.log(react.version);
+console.log(React.version);
 

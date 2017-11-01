@@ -23,7 +23,16 @@ module.exports = {
         }
     },
     module: {
-        rules: [
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                query:
+                    {
+                        presets:['react','es2015']
+                    }
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -54,6 +63,10 @@ module.exports = {
                 use: [
                     'xml-loader'
                 ]
+            },
+            {
+                test: /\.less/,
+                loader: 'style-loader!css-loader!less-loader'
             }
         ]
     }
